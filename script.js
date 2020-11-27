@@ -76,7 +76,7 @@ const bubblesArray = [];
 class Bubble {
 	constructor() {
 		this.x = Math.random() * canvas.width;
-		this.y = Math.random() * canvas.height;
+		this.y = canvas.height + Math.random() * canvas.height;
 		this.radius = 50;
 		this.speed = Math.random() * 5 + 1;
 		this.distance;
@@ -100,6 +100,11 @@ function handleBubbles() {
 	for (let i = 0; i < bubblesArray.length; i++) {
 		bubblesArray[i].update();
 		bubblesArray[i].draw();
+	}
+	for (let i = 0; i < bubblesArray.length; i++) {
+		if (bubblesArray[i].y < 0 - this.radius * 2) {
+			bubblesArray.splice(i, 1);
+		}
 	}
 }
 
